@@ -12,7 +12,7 @@ const ProfileInfo = ({ onLogout }) => {
 	  <div>
 		<p className="text-sm font-medium">Bhanu</p>
 		<button className="text-sm ☐text-slate-700 " onClick={onLogout}>
-		  Logout
+		  SignOut
 		</button>
 	  </div>
 	</div>
