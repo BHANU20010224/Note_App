@@ -48,14 +48,14 @@ return (
       <input
         type="text"
         value={inputValue}
-        className="text-sm bg-transparent border px-3 py-2 rounded outline-none"
+        className="text-sm bg-transparent border border-gray-300 px-3 py-2 rounded-full outline-none"
         placeholder="Add tags"
         onChange={handleInputChange}
         onKeyDown={handleKeyDown}
       />
       <button
         type="button"
-        className="w-8 h-8 flex items-center justify-center rounded border border-blue-700 hover:bg-blue-700 transition-all text-blue-700 hover:text-white"
+        className="w-8 h-8 flex items-center justify-center rounded-full border border-blue-700 hover:bg-blue-700 transition-all text-blue-700 hover:text-white"
         onClick={() => {
           addNewTag();
         }}
