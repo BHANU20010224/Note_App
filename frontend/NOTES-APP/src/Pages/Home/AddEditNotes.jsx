@@ -34,7 +34,7 @@ const AddEditNotes = ({ type, onclose }) => {
   return (
     <div className="relative">
       <button
-        className="w-10 h-10 rounded-full flex items-center justify-center absolute -top-3 -right-3 hover:bg-slate-50 hover:border hover:border-slate-300 transition-all"
+        className="w-10 h-10 rounded-full flex items-center justify-center absolute -top-3 -right-3 hover:bg-slate-50 hover:border hover:border-slate-300 transition-all "
         onClick={onclose}
       >
         <MdClose className="text-xl text-slate-400" />
@@ -62,7 +62,7 @@ const AddEditNotes = ({ type, onclose }) => {
         />
       </div>
 
-      <div className="mt-4 flex flex-col gap-2">
+      <div className="mt-4 flex flex-col gap-2 p-2 rounded">
         <label className="input-label">TAGS</label>
         <TagInput tags={tags} setTags={setTags} />
       </div>
