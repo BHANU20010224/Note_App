@@ -5,16 +5,16 @@ import { MdAdd } from 'react-icons/md';
 import AddEditNotes from './AddEditNotes';
 import Modal from 'react-modal';
 
-
-
+// Set the root element for accessibility
+Modal.setAppElement('#root');
 
 const Home = () => {
-
-  const [openAddEditModal, setOpenAddEditModal] = useState ({
+  const [openAddEditModal, setOpenAddEditModal] = useState({
     isShown: false,
-    type: "add",
+    type: 'add',
     data: null,
-}) ;
+  });
+
   return (
     <>
       <Navbar />
@@ -32,29 +32,40 @@ const Home = () => {
           />
         </div>
       </div>
-      <button
-          className="w-16 h-16 flex items-center justify-center bg-blue-600 rounded-full fixed bottom-8 right-8 shadow-lg border border-transparent hover:shadow-xl hover:border-blue-400 transition-all"
 
-          onClick={() => {setOpenAddEditModal({ isShown: true, type: "add", data: null });}}
-        >
-          <MdAdd className="text-[32px] text-white" />
-        </button>
-        <Modal
-          isOpen={openAddEditModal.isShown}
-          onRequestClose={() => setOpenAddEditModal({ ...openAddEditModal, isShown: false })}
-          style={{
-            overlay: {
-              backgroundColor: "rgba(0,0,0,0.2)",
-            },
-          }}
-          contentLabel="Add or Edit Note"
-          className={"w-[40%] h-[85vh] bg-white rounded-4xl mx-auto mt-14 p-5 overflow-auto"}
-        >
-          <AddEditNotes />
-        </Modal>
+      {/* Floating Add Button */}
+      <button
+        className="w-16 h-16 flex items-center justify-center bg-blue-600 rounded-full fixed bottom-8 right-8 shadow-lg border border-transparent hover:shadow-xl hover:border-blue-400 transition-all"
+        onClick={() =>
+          setOpenAddEditModal({ isShown: true, type: 'add', data: null })
+        }
+      >
+        <MdAdd className="text-[32px] text-white" />
+      </button>
+
+      {/* Modal for Add/Edit Note */}
+      <Modal
+        isOpen={openAddEditModal.isShown}
+        onRequestClose={() =>
+          setOpenAddEditModal({ ...openAddEditModal, isShown: false })
+        }
+        style={{
+          overlay: {
+            backgroundColor: 'rgba(0,0,0,0.2)',
+            zIndex: 50,
+          },
+        }}
+        contentLabel="Add or Edit Note"
+        className="w-[40%] h-[90vh] bg-white rounded-2xl mx-auto mt-14 p-5 overflow-auto outline-none"
+      >
+        <AddEditNotes
+          onclose={() =>
+            setOpenAddEditModal({ isShown: false, type: 'add', data: null })
+          }
+        />
+      </Modal>
     </>
   );
-};
-
+}
 
 export default Home;
